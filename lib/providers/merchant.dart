@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Merchant extends ChangeNotifier {
-  final String id;
+  final int id;
   final String name;
   final String email;
   final String password;

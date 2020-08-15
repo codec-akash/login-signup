@@ -47,167 +47,195 @@ class _SignUpScreenState extends State<SignUpScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey,
-      body: Form(
-        key: _formKey,
-        child: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: "E-mail",
-                  labelStyle: TextStyle(
-                    color: Colors.white,
+      body: SafeArea(
+        child: Form(
+          key: _formKey,
+          child: SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(
+                children: <Widget>[
+                  SizedBox(
+                    height: 130.0,
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
+                  Text(
+                    "SignUp",
+                    style: TextStyle(
+                      fontSize: 28.0,
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
-                ),
-                keyboardType: TextInputType.emailAddress,
-                textInputAction: TextInputAction.next,
-                validator: (value) {
-                  if (value.isEmpty ||
-                      !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                          .hasMatch(value)) {
-                    return "Enter a valid email";
-                  }
-                  return null;
-                },
-                onSaved: (newValue) {
-                  _authData['email'] = newValue;
-                },
-                onFieldSubmitted: (value) {
-                  FocusScope.of(context).requestFocus(_nameFocus);
-                },
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: "Name",
-                  labelStyle: TextStyle(
-                    color: Colors.white,
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "E-mail",
+                      labelStyle: TextStyle(
+                        color: Colors.white,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
+                    keyboardType: TextInputType.emailAddress,
+                    textInputAction: TextInputAction.next,
+                    validator: (value) {
+                      if (value.isEmpty ||
+                          !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
+                              .hasMatch(value)) {
+                        return "Enter a valid email";
+                      }
+                      return null;
+                    },
+                    onSaved: (newValue) {
+                      _authData['email'] = newValue;
+                    },
+                    onFieldSubmitted: (value) {
+                      FocusScope.of(context).requestFocus(_nameFocus);
+                    },
                   ),
-                ),
-                validator: (value) {
-                  if (value.isEmpty) {
-                    return "Enter a valid Name";
-                  }
-                  return null;
-                },
-                onSaved: (newValue) {
-                  _authData['name'] = newValue;
-                },
-                onFieldSubmitted: (value) {
-                  FocusScope.of(context).requestFocus(_phoneNumber);
-                },
-                focusNode: _nameFocus,
-                keyboardType: TextInputType.text,
-                textInputAction: TextInputAction.next,
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: "PhoneNumber",
-                  labelStyle: TextStyle(
-                    color: Colors.white,
+                  SizedBox(
+                    height: 20.0,
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Name",
+                      labelStyle: TextStyle(
+                        color: Colors.white,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
+                    validator: (value) {
+                      if (value.isEmpty) {
+                        return "Enter a valid Name";
+                      }
+                      return null;
+                    },
+                    onSaved: (newValue) {
+                      _authData['name'] = newValue;
+                    },
+                    onFieldSubmitted: (value) {
+                      FocusScope.of(context).requestFocus(_phoneNumber);
+                    },
+                    focusNode: _nameFocus,
+                    keyboardType: TextInputType.text,
+                    textInputAction: TextInputAction.next,
                   ),
-                ),
-                focusNode: _phoneNumber,
-                keyboardType: TextInputType.number,
-                textInputAction: TextInputAction.next,
-                validator: (value) {
-                  if (value.isEmpty || value.length != 10) {
-                    return "Invalid Phone Number";
-                  }
-                  return null;
-                },
-                onSaved: (newValue) {
-                  _authData['phoneNumber'] = newValue;
-                },
-                onFieldSubmitted: (value) {
-                  FocusScope.of(context).requestFocus(_passWord);
-                },
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: "Password",
-                  labelStyle: TextStyle(
-                    color: Colors.white,
+                  SizedBox(
+                    height: 20.0,
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "PhoneNumber",
+                      labelStyle: TextStyle(
+                        color: Colors.white,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
+                    focusNode: _phoneNumber,
+                    keyboardType: TextInputType.number,
+                    textInputAction: TextInputAction.next,
+                    validator: (value) {
+                      if (value.isEmpty || value.length != 10) {
+                        return "Invalid Phone Number";
+                      }
+                      return null;
+                    },
+                    onSaved: (newValue) {
+                      _authData['phoneNumber'] = newValue;
+                    },
+                    onFieldSubmitted: (value) {
+                      FocusScope.of(context).requestFocus(_passWord);
+                    },
                   ),
-                ),
-                validator: (value) {
-                  if (value.isEmpty || value.length <= 8) {
-                    return "Enter a valid password";
-                  }
-                  return null;
-                },
-                focusNode: _passWord,
-                controller: _passwordController,
-                obscureText: true,
-                textInputAction: TextInputAction.next,
-                keyboardType: TextInputType.text,
-                onSaved: (newValue) {
-                  _authData['password'] = newValue;
-                },
-                onFieldSubmitted: (value) {
-                  FocusScope.of(context).requestFocus();
-                },
-              ),
-              SizedBox(
-                height: 20.0,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                  labelText: "Confirm-Password",
-                  labelStyle: TextStyle(
-                    color: Colors.white,
+                  SizedBox(
+                    height: 20.0,
                   ),
-                  focusedBorder: OutlineInputBorder(
-                    borderSide: BorderSide(
-                      color: Colors.white,
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Password",
+                      labelStyle: TextStyle(
+                        color: Colors.white,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
+                    validator: (value) {
+                      if (value.isEmpty || value.length <= 8) {
+                        return "Enter a valid password";
+                      }
+                      return null;
+                    },
+                    focusNode: _passWord,
+                    controller: _passwordController,
+                    obscureText: true,
+                    textInputAction: TextInputAction.next,
+                    keyboardType: TextInputType.text,
+                    onSaved: (newValue) {
+                      _authData['password'] = newValue;
+                    },
+                    onFieldSubmitted: (value) {
+                      FocusScope.of(context).requestFocus();
+                    },
                   ),
-                ),
-                obscureText: true,
-                validator: (value) {
-                  if (value != _passwordController.text) {
-                    return "Password does not match";
-                  }
-                  return null;
-                },
-                textInputAction: TextInputAction.done,
-                keyboardType: TextInputType.text,
-                onFieldSubmitted: (value) => _saveForm(),
-              ),
-              _isLoading
-                  ? CircularProgressIndicator()
-                  : RaisedButton(
-                      onPressed: _saveForm,
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Confirm-Password",
+                      labelStyle: TextStyle(
+                        color: Colors.white,
+                      ),
+                      focusedBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.white,
+                        ),
+                      ),
                     ),
-            ],
+                    obscureText: true,
+                    validator: (value) {
+                      if (value != _passwordController.text) {
+                        return "Password does not match";
+                      }
+                      return null;
+                    },
+                    textInputAction: TextInputAction.done,
+                    keyboardType: TextInputType.text,
+                    onFieldSubmitted: (value) => _saveForm(),
+                  ),
+                  SizedBox(
+                    height: 25.0,
+                  ),
+                  _isLoading
+                      ? CircularProgressIndicator()
+                      : RaisedButton(
+                          padding: EdgeInsets.symmetric(
+                            vertical: 15.0,
+                            horizontal: 25.0,
+                          ),
+                          child: Text(
+                            "Register",
+                            style: TextStyle(
+                              fontSize: 15.0,
+                            ),
+                          ),
+                          onPressed: _saveForm,
+                        ),
+                ],
+              ),
+            ),
           ),
         ),
       ),
